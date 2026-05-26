@@ -1,0 +1,24 @@
+.feature-card {
+  padding: var(--hh-card-padding);
+  
+  &:hover {
+    .icon-circle {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+
+  .icon-circle {
+    width: 64px;
+    height: 64px;
+    font-size: 1.75rem;
+  }
+
+  .feature-title {
+    margin-bottom: 12px;
+  }
+
+  .feature-desc {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+}

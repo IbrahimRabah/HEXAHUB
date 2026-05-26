@@ -1,0 +1,7 @@
+<div class="feature-card glass-card h-100 text-center" appScrollReveal>
+  <div class="icon-circle mx-auto mb-4" [style.color]="accentColor()" [style.background]="'color-mix(in srgb, ' + accentColor() + ' 15%, transparent)'">
+    <i class="pi" [ngClass]="icon()"></i>
+  </div>
+  <h4 class="feature-title">{{ title() }}</h4>
+  <p class="feature-desc">{{ description() }}</p>
+</div>

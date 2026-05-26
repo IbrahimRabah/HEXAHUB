@@ -1,0 +1,33 @@
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--hh-gradient-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  z-index: var(--hh-z-back-to-top);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: var(--hh-transition);
+  box-shadow: 0 4px 15px rgba(79, 125, 249, 0.4);
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(79, 125, 249, 0.6);
+  }
+}

@@ -1,0 +1,23 @@
+<div class="timeline-container">
+  <div class="timeline-line" [style.background]="accentColor()"></div>
+  
+  @for (milestone of milestones(); track milestone.year; let i = $index) {
+    <div class="timeline-item" [class.left]="i % 2 === 0" [class.right]="i % 2 !== 0">
+      <div class="timeline-dot" [style.border-color]="accentColor()" [style.box-shadow]="'0 0 15px color-mix(in srgb, ' + accentColor() + ' 40%, transparent)'"></div>
+      
+      <div class="timeline-content glass-card">
+        <div class="timeline-year" [style.color]="accentColor()">{{ milestone.year }}</div>
+        <h3 class="timeline-title">{{ milestone.title }}</h3>
+        
+        <ul class="timeline-items list-unstyled m-0">
+          @for (item of milestone.items; track item) {
+            <li>
+              <i class="pi pi-check" [style.color]="accentColor()"></i>
+              <span>{{ item }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  }
+</div>

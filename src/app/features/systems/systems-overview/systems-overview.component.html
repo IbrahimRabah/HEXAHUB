@@ -1,0 +1,68 @@
+<!-- Hero Section -->
+<section class="systems-hero">
+  <div class="glow-bg"></div>
+  <div class="container text-center" @staggerFade>
+    <div class="badge stagger-item">Our Ecosystem</div>
+    <h1 class="stagger-item">Six Systems. Infinite Possibilities.</h1>
+    <p class="lead stagger-item">Discover our suite of enterprise solutions, designed to work perfectly alone and even better together.</p>
+  </div>
+</section>
+
+<!-- Systems Grid -->
+<section class="systems-grid-section section-padding">
+  <div class="container">
+    <div class="row g-5" @staggerFade>
+      @for (system of systems; track system.id; let i = $index) {
+        <div class="col-12 stagger-item">
+          <div class="system-card-horizontal" [ngClass]="system.themeClass">
+            <div class="row g-0 align-items-center" [class.flex-row-reverse]="i % 2 !== 0">
+              
+              <div class="col-lg-6">
+                <div class="card-content">
+                  <div class="d-flex align-items-center gap-3 mb-4">
+                    <div class="system-icon" [style.background]="system.accentGradient">
+                      <i [class]="system.icon"></i>
+                    </div>
+                    <h2 class="m-0">{{ system.name }}</h2>
+                  </div>
+                  
+                  <h3 class="tagline">{{ system.tagline }}</h3>
+                  <p class="description">{{ system.shortDescription }}</p>
+                  
+                  <div class="feature-list mt-4 mb-4">
+                    <div class="row g-3">
+                      @for (feature of system.features | slice:0:4; track feature.title) {
+                        <div class="col-sm-6">
+                          <div class="feature-item">
+                            <i class="pi pi-check-circle"></i>
+                            <span>{{ feature.title }}</span>
+                          </div>
+                        </div>
+                      }
+                    </div>
+                  </div>
+
+                  <a [routerLink]="['/systems', system.slug]" class="btn btn-outline">
+                    Explore {{ system.name }} <i class="pi pi-arrow-right ms-2"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="card-visual">
+                  <div class="visual-placeholder" [style.background]="system.accentGradient">
+                    <i [class]="system.icon"></i>
+                    <div class="glass-overlay"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<app-contact-cta />

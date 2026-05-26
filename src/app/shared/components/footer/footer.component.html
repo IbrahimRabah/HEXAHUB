@@ -1,0 +1,80 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row g-5">
+      <!-- About Column -->
+      <div class="col-lg-4 col-md-6">
+        <a class="footer-brand" routerLink="/">HEXA<span>HUB</span></a>
+        <p class="footer-desc mt-4">{{ company.description }}</p>
+        <div class="social-links mt-4">
+          @for (social of company.social; track social.icon) {
+            <a [href]="social.url" target="_blank" [attr.aria-label]="social.icon">
+              <i class="pi" [ngClass]="social.icon"></i>
+            </a>
+          }
+        </div>
+      </div>
+
+      <!-- Link Columns -->
+      @for (section of footerSections; track section.title) {
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-heading">{{ section.title }}</h4>
+          <ul class="footer-links list-unstyled m-0">
+            @for (link of section.links; track link.label) {
+              <li>
+                @if (link.routerLink) {
+                  <a [routerLink]="link.routerLink" [class.system-link]="link.routerLink.startsWith('/systems/')">
+                    {{ link.label }}
+                  </a>
+                } @else if (link.href) {
+                  <a [href]="link.href" target="_blank">
+                    @if (link.icon) {
+                      <i class="pi" [ngClass]="link.icon"></i>
+                    }
+                    {{ link.label }}
+                  </a>
+                }
+              </li>
+            }
+          </ul>
+        </div>
+      }
+
+      <!-- Contact Info -->
+      <div class="col-lg-4 col-md-6">
+        <h4 class="footer-heading">Contact Us</h4>
+        <ul class="footer-contact list-unstyled m-0">
+          <li>
+            <i class="pi pi-map-marker text-primary"></i>
+            <span>{{ company.location }}</span>
+          </li>
+          <li>
+            <i class="pi pi-envelope text-primary"></i>
+            <a [href]="'mailto:' + company.email">{{ company.email }}</a>
+          </li>
+          <li>
+            <i class="pi pi-phone text-primary"></i>
+            <a [href]="'tel:' + company.phone">{{ company.phone }}</a>
+          </li>
+        </ul>
+        
+        <div class="quick-contact mt-4">
+          <a [href]="'https://wa.me/' + company.whatsapp.replace('+', '').replace(/ /g, '')" target="_blank" class="btn btn-whatsapp">
+            <i class="pi pi-whatsapp"></i> WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+      <div class="copyright">
+        &copy; {{ currentYear }} HexaHub. All rights reserved.
+      </div>
+      <div class="slogan">
+        <span class="gradient-text">{{ company.slogan }}</span>
+      </div>
+    </div>
+  </div>
+</footer>

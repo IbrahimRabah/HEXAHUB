@@ -1,0 +1,161 @@
+<section class="contact-hero">
+  <div class="glow-bg"></div>
+  <div class="container text-center" @staggerFade>
+    <h1 class="stagger-item">Get in Touch</h1>
+    <p class="lead stagger-item">Ready to transform your business? Our team is here to help you get started with HexaHub.</p>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="container">
+    <div class="row g-5">
+      
+      <!-- Contact Info -->
+      <div class="col-lg-5" @staggerFade>
+        <div class="contact-info stagger-item">
+          <h2>Contact Information</h2>
+          <p class="text-secondary mb-4">Fill out the form and our team will get back to you within 24 hours.</p>
+
+          <div class="info-items">
+            <div class="info-item">
+              <div class="icon">
+                <i class="pi pi-envelope"></i>
+              </div>
+              <div>
+                <h4>Email</h4>
+                <a [href]="'mailto:' + company.email">{{ company.email }}</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="icon">
+                <i class="pi pi-phone"></i>
+              </div>
+              <div>
+                <h4>Phone</h4>
+                <a [href]="'tel:' + company.phone.replace(' ', '')">{{ company.phone }}</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="icon">
+                <i class="pi pi-whatsapp"></i>
+              </div>
+              <div>
+                <h4>WhatsApp</h4>
+                <a [href]="'https://wa.me/' + company.whatsapp" target="_blank">{{ company.whatsapp }}</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="icon">
+                <i class="pi pi-map-marker"></i>
+              </div>
+              <div>
+                <h4>Location</h4>
+                <p>{{ company.location }}</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="social-links mt-5">
+            <h4>Follow Us</h4>
+            <div class="d-flex gap-3 mt-3">
+              @for (social of company.social; track social.icon) {
+                <a [href]="social.url" target="_blank" class="social-btn">
+                  <i class="pi" [ngClass]="social.icon"></i>
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="col-lg-7" @staggerFade>
+        <div class="contact-card stagger-item">
+          @if (isSubmitted) {
+            <div class="success-message">
+              <div class="success-icon">
+                <i class="pi pi-check-circle"></i>
+              </div>
+              <h3>Message Sent Successfully!</h3>
+              <p>Thank you for reaching out. Our team will contact you shortly.</p>
+            </div>
+          } @else {
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" formControlName="name" class="form-control" placeholder="John Doe">
+                    @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
+                      <div class="error-msg">Name is required</div>
+                    }
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="email">Work Email *</label>
+                    <input type="email" id="email" formControlName="email" class="form-control" placeholder="john@company.com">
+                    @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+                      <div class="error-msg">Valid email is required</div>
+                    }
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" formControlName="company" class="form-control" placeholder="Company LLC">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" formControlName="phone" class="form-control" placeholder="+20 10 000 0000">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="system">Interested System</label>
+                    <select id="system" formControlName="system" class="form-control">
+                      <option value="">Select a system</option>
+                      <option value="core">Hexa Core</option>
+                      <option value="commerce">Hexa Commerce</option>
+                      <option value="care">Hexa Care</option>
+                      <option value="campus">Hexa Campus</option>
+                      <option value="craft">Hexa Craft</option>
+                      <option value="console">Hexa Console</option>
+                      <option value="general">General Inquiry</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" formControlName="message" class="form-control" rows="5" placeholder="How can we help you?"></textarea>
+                    @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
+                      <div class="error-msg">Message is required</div>
+                    }
+                  </div>
+                </div>
+
+                <div class="col-12 mt-4">
+                  <button type="submit" class="btn btn-primary w-100 p-3" [disabled]="contactForm.invalid">
+                    Send Message <i class="pi pi-send ms-2"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

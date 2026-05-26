@@ -1,0 +1,233 @@
+
+.contact-hero {
+  position: relative;
+  padding: 6rem 0 3rem;
+  overflow: hidden;
+
+  .glow-bg {
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(79, 125, 249, 0.15) 0%, transparent 70%);
+    z-index: 0;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(135deg, #fff, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .lead {
+    color: var(--hh-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.contact-section {
+  padding-bottom: 6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-info {
+  background: var(--hh-card-bg);
+  border: 1px solid var(--hh-card-border);
+  border-radius: 24px;
+  padding: 3rem;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--hh-blue), var(--hh-cyan));
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .info-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(79, 125, 249, 0.1);
+      color: var(--hh-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    h4 {
+      font-size: 1rem;
+      color: var(--hh-text-secondary);
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+
+    a, p {
+      color: var(--hh-text-primary);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0;
+      transition: var(--hh-transition);
+    }
+
+    a:hover {
+      color: var(--hh-blue);
+    }
+  }
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: var(--hh-transition);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  &:hover {
+    background: var(--hh-blue);
+    border-color: var(--hh-blue);
+    transform: translateY(-3px);
+  }
+}
+
+.contact-card {
+  background: var(--hh-card-bg);
+  border: 1px solid var(--hh-card-border);
+  border-radius: 24px;
+  padding: 3rem;
+  height: 100%;
+}
+
+.form-group {
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--hh-text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .form-control {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    color: white;
+    font-size: 1rem;
+    transition: var(--hh-transition);
+
+    &:focus {
+      outline: none;
+      border-color: var(--hh-blue);
+      box-shadow: 0 0 0 3px rgba(79, 125, 249, 0.15);
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    option {
+      background: var(--hh-bg-color);
+      color: white;
+    }
+  }
+
+  .error-msg {
+    color: var(--hh-red);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+}
+
+.success-message {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 0;
+  animation: fadeIn 0.5s ease-out forwards;
+
+  .success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--hh-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--hh-green);
+  }
+
+  p {
+    color: var(--hh-text-secondary);
+    font-size: 1.1rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .contact-info,
+  .contact-card {
+    padding: 2rem;
+  }
+}

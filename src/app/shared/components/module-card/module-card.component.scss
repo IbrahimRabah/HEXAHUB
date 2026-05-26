@@ -1,0 +1,28 @@
+.module-card {
+  padding: 32px;
+
+  .module-desc {
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+  }
+
+  .module-features {
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: var(--hh-text-secondary);
+      font-size: 0.95rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      i {
+        margin-top: 4px;
+        font-size: 1.1rem;
+      }
+    }
+  }
+}

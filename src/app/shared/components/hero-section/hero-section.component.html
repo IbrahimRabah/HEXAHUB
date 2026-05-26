@@ -1,0 +1,35 @@
+<section class="hero-section" [ngClass]="backgroundClass()">
+  @if (showParticles()) {
+    <div class="particles">
+      <div class="particle p1" [style.background]="accentColor()"></div>
+      <div class="particle p2" [style.background]="accentColor()"></div>
+      <div class="particle p3" [style.background]="accentColor()"></div>
+    </div>
+  }
+  
+  <div class="container hero-container">
+    <div class="hero-content text-center" appScrollReveal>
+      @if (subtitle()) {
+        <h3 class="hero-subtitle" [style.color]="accentColor()">{{ subtitle() }}</h3>
+      }
+      <h1 class="hero-title" [innerHTML]="title()"></h1>
+      @if (description()) {
+        <p class="hero-description mx-auto">{{ description() }}</p>
+      }
+      
+      <div class="hero-actions">
+        @if (primaryButtonText() && primaryButtonLink()) {
+          <a [routerLink]="primaryButtonLink()" class="btn-hh-primary" [style.background]="accentColor()">
+            {{ primaryButtonText() }}
+            <i class="pi pi-arrow-right"></i>
+          </a>
+        }
+        @if (secondaryButtonText() && secondaryButtonLink()) {
+          <a [routerLink]="secondaryButtonLink()" class="btn-hh-outline">
+            {{ secondaryButtonText() }}
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+</section>

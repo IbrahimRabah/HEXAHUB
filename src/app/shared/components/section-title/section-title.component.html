@@ -1,0 +1,11 @@
+<div class="section-title text-center" [class.light]="light()" appScrollReveal>
+  @if (subtitle()) {
+    <span class="subtitle" [style.color]="accentColor()">{{ subtitle() }}</span>
+  }
+  <h2 class="title" [innerHTML]="title()"></h2>
+  <div class="divider mx-auto">
+    <div class="divider-line" [style.background]="accentColor()"></div>
+    <div class="divider-dot" [style.background]="accentColor()"></div>
+    <div class="divider-line" [style.background]="accentColor()"></div>
+  </div>
+</div>

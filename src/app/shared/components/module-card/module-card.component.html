@@ -1,0 +1,21 @@
+<div class="module-card glass-card h-100" appScrollReveal>
+  <div class="card-header d-flex align-items-center gap-3 mb-3">
+    <div class="icon-circle" [style.color]="accentColor()" [style.background]="'color-mix(in srgb, ' + accentColor() + ' 15%, transparent)'">
+      <i class="pi" [ngClass]="module().icon"></i>
+    </div>
+    <h4 class="module-title m-0">{{ module().name }}</h4>
+  </div>
+  
+  <p class="module-desc">{{ module().description }}</p>
+  
+  @if (module().features && module().features!.length > 0) {
+    <ul class="module-features list-unstyled m-0">
+      @for (feature of module().features; track feature) {
+        <li>
+          <i class="pi pi-check-circle" [style.color]="accentColor()"></i>
+          <span>{{ feature }}</span>
+        </li>
+      }
+    </ul>
+  }
+</div>

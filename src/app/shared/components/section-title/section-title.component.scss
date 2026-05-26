@@ -1,0 +1,53 @@
+.section-title {
+  margin-bottom: 3.5rem;
+
+  .subtitle {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--hh-text-heading);
+
+    ::ng-deep span {
+      background: var(--hh-gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 120px;
+
+    .divider-line {
+      height: 2px;
+      flex: 1;
+      border-radius: 2px;
+      opacity: 0.5;
+    }
+
+    .divider-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+  }
+
+  &.light {
+    .title {
+      color: #1e293b;
+    }
+  }
+}

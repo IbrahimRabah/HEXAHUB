@@ -1,0 +1,32 @@
+<div class="system-card glass-card h-100 d-flex flex-column" appScrollReveal>
+  <div class="card-header">
+    <div class="icon-wrapper" [style.color]="system().accentColor" [style.background]="'color-mix(in srgb, ' + system().accentColor + ' 15%, transparent)'">
+      <i class="pi" [ngClass]="system().icon"></i>
+    </div>
+    <h3 class="system-name">{{ system().name }}</h3>
+  </div>
+  
+  <div class="card-body flex-grow-1">
+    <p class="system-desc">{{ system().shortDescription }}</p>
+    
+    <div class="features-list">
+      @for (feature of system().features.slice(0, 4); track feature.title) {
+        <span class="feature-tag">
+          <i class="pi" [ngClass]="feature.icon"></i>
+          {{ feature.title }}
+        </span>
+      }
+      @if (system().features.length > 4) {
+        <span class="feature-tag more">
+          +{{ system().features.length - 4 }} more
+        </span>
+      }
+    </div>
+  </div>
+
+  <div class="card-footer mt-auto pt-4">
+    <a [routerLink]="['/systems', system().slug]" class="learn-more-link" [style.color]="system().accentColor">
+      Explore System <i class="pi pi-arrow-right"></i>
+    </a>
+  </div>
+</div>

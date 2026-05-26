@@ -1,0 +1,104 @@
+@if (system) {
+  <div [class]="system.themeClass">
+    <!-- Hero Section -->
+    <section class="system-hero">
+      <div class="glow-bg" [style.background]="'radial-gradient(circle, ' + system.accentColor + '20 0%, transparent 70%)'"></div>
+      <div class="container text-center" @staggerFade>
+        <div class="system-icon-large stagger-item" [style.background]="system.accentGradient">
+          <i [class]="system.icon"></i>
+        </div>
+        <div class="badge stagger-item" [style.color]="system.accentColor" [style.borderColor]="system.accentColor + '40'" [style.background]="system.accentColor + '10'">
+          {{ system.name }}
+        </div>
+        <h1 class="stagger-item">{{ system.heroSlogan }}</h1>
+        <p class="lead stagger-item">{{ system.fullDescription }}</p>
+      </div>
+    </section>
+
+    <!-- Key Benefits Section -->
+    <section class="benefits-section section-padding">
+      <div class="container">
+        <div class="row g-4 justify-content-center" @staggerFade>
+          @for (benefit of system.benefits; track benefit) {
+            <div class="col-md-6 col-lg-4 stagger-item">
+              <div class="benefit-card">
+                <div class="check-icon" [style.color]="system.accentColor">
+                  <i class="pi pi-check-circle"></i>
+                </div>
+                <p class="m-0 fw-semibold">{{ benefit }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Tabs Section (Features vs Modules) -->
+    <section class="details-section section-padding">
+      <div class="container">
+        
+        <!-- Custom Tabs -->
+        <div class="custom-tabs-container mb-5 text-center">
+          <div class="custom-tabs">
+            <button class="tab-btn" [class.active]="activeTab === 'features'" (click)="setTab('features')">
+              Core Features
+            </button>
+            <button class="tab-btn" [class.active]="activeTab === 'modules'" (click)="setTab('modules')">
+              System Modules
+            </button>
+            <div class="tab-indicator" [class.pos-2]="activeTab === 'modules'" [style.background]="system.accentGradient"></div>
+          </div>
+        </div>
+
+        <!-- Features Content -->
+        @if (activeTab === 'features') {
+          <div class="row g-4" @staggerFade>
+            @for (feature of system.features; track feature.title) {
+              <div class="col-md-6 col-lg-4 stagger-item">
+                <div class="feature-detail-card">
+                  <div class="icon-wrapper" [style.color]="system.accentColor" [style.background]="system.accentColor + '15'">
+                    <i [class]="feature.icon"></i>
+                  </div>
+                  <h3>{{ feature.title }}</h3>
+                  <p>{{ feature.description }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        }
+
+        <!-- Modules Content -->
+        @if (activeTab === 'modules') {
+          <div class="row g-4" @staggerFade>
+            @for (module of system.modules; track module.name) {
+              <div class="col-lg-6 stagger-item">
+                <div class="module-card">
+                  <div class="module-header">
+                    <div class="icon-wrapper" [style.background]="system.accentGradient">
+                      <i [class]="module.icon"></i>
+                    </div>
+                    <div>
+                      <h3>{{ module.name }}</h3>
+                      <p>{{ module.description }}</p>
+                    </div>
+                  </div>
+                  <ul class="module-features list-unstyled m-0">
+                    @for (feature of module.features; track feature) {
+                      <li>
+                        <i class="pi pi-check" [style.color]="system.accentColor"></i>
+                        <span>{{ feature }}</span>
+                      </li>
+                    }
+                  </ul>
+                </div>
+              </div>
+            }
+          </div>
+        }
+
+      </div>
+    </section>
+
+    <app-contact-cta />
+  </div>
+}

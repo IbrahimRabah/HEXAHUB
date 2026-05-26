@@ -1,0 +1,17 @@
+<section class="cta-section" [style.--cta-accent]="accentColor()" appScrollReveal>
+  <div class="container">
+    <div class="cta-card glass-card text-center">
+      <div class="cta-content">
+        <h2 class="cta-title">{{ title() }}</h2>
+        <p class="cta-desc mx-auto">{{ description() }}</p>
+        <a [routerLink]="buttonLink()" class="btn-hh-accent">
+          {{ buttonText() }}
+          <i class="pi pi-arrow-right"></i>
+        </a>
+      </div>
+      
+      <!-- Decorative background glow -->
+      <div class="cta-glow"></div>
+    </div>
+  </div>
+</section>

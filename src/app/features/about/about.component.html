@@ -1,0 +1,130 @@
+<!-- Hero Section -->
+<section class="about-hero">
+  <div class="glow-bg"></div>
+  <div class="container text-center" @staggerFade>
+    <div class="badge stagger-item">About HexaHub</div>
+    <h1 class="stagger-item">Redefining Enterprise Software</h1>
+    <p class="lead stagger-item">We believe that powerful enterprise software doesn't have to be complicated. HexaHub is built to unify your operations into one seamless ecosystem.</p>
+  </div>
+</section>
+
+<!-- Vision & Mission Section -->
+<section class="vision-mission-section section-padding">
+  <div class="container">
+    <div class="row g-4 justify-content-center" @staggerFade>
+      <div class="col-md-6 stagger-item">
+        <div class="vm-card vision-card">
+          <div class="vm-icon">
+            <i class="pi pi-eye"></i>
+          </div>
+          <h3>Our Vision</h3>
+          <p>{{ vision }}</p>
+        </div>
+      </div>
+      <div class="col-md-6 stagger-item">
+        <div class="vm-card mission-card">
+          <div class="vm-icon">
+            <i class="pi pi-bullseye"></i>
+          </div>
+          <h3>Our Mission</h3>
+          <p>{{ mission }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Founder's Message Section -->
+<section class="founder-section section-padding">
+  <div class="container">
+    <div class="founder-card" @staggerFade>
+      <div class="quote-icon stagger-item"><i class="pi pi-quote-left"></i></div>
+      <blockquote class="stagger-item">{{ founder.quote }}</blockquote>
+      <div class="founder-info stagger-item">
+        <div class="founder-divider"></div>
+        <div class="founder-name">{{ founder.name }}</div>
+        <div class="founder-title">{{ founder.title }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values Section -->
+<section class="values-section section-padding">
+  <div class="container">
+    <div class="section-header text-center mb-5" @staggerFade>
+      <h2 class="stagger-item">Our Core Values</h2>
+      <p class="stagger-item">The principles that guide every line of code we write and every decision we make.</p>
+    </div>
+
+    <div class="row g-4" @staggerFade>
+      @for (value of coreValues; track value.title) {
+        <div class="col-md-6 col-lg-4 stagger-item">
+          <div class="value-card">
+            <div class="icon-wrapper">
+              <i [class]="value.icon"></i>
+            </div>
+            <h3>{{ value.title }}</h3>
+            <p>{{ value.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Industries Section -->
+<section class="industries-section section-padding">
+  <div class="container">
+    <div class="section-header text-center mb-5" @staggerFade>
+      <h2 class="stagger-item">Industries We Serve</h2>
+      <p class="stagger-item">Our adaptable ecosystem is designed to meet the specific needs of diverse sectors.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center" @staggerFade>
+      @for (industry of industries; track industry.title) {
+        <div class="col-md-6 col-lg-4 stagger-item">
+          <div class="industry-card">
+            <div class="icon-wrapper">
+              <i [class]="industry.icon"></i>
+            </div>
+            <h3>{{ industry.title }}</h3>
+            <p>{{ industry.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Timeline Section -->
+<section class="timeline-section section-padding">
+  <div class="container">
+    <div class="section-header text-center mb-5" @staggerFade>
+      <h2 class="stagger-item">Our Journey</h2>
+      <p class="stagger-item">The milestones that shaped the HexaHub ecosystem.</p>
+    </div>
+
+    <div class="timeline" @staggerFade>
+      @for (milestone of milestones; track milestone.year; let i = $index) {
+        <div class="timeline-item stagger-item" [class.reverse]="i % 2 !== 0">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="year">{{ milestone.year }}</div>
+            <h3>{{ milestone.title }}</h3>
+            <ul class="events-list">
+              @for (event of milestone.events; track event) {
+                <li>
+                  <i class="pi pi-angle-right"></i>
+                  {{ event }}
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<app-contact-cta />

@@ -1,0 +1,48 @@
+
+.cta-section {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-card {
+  background: linear-gradient(180deg, rgba(17, 22, 56, 0.8) 0%, rgba(10, 14, 39, 0.9) 100%);
+  border: 1px solid rgba(79, 125, 249, 0.2);
+  border-radius: 32px;
+  padding: 5rem 3rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+
+  .glow-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(79, 125, 249, 0.15) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  p {
+    color: var(--hh-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn {
+    position: relative;
+    z-index: 1;
+  }
+}
