@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 import { COMPANY_INFO } from '../../core/constants/company.data';
+import { ContactService } from '../../core/services/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -24,39 +25,42 @@ import { COMPANY_INFO } from '../../core/constants/company.data';
   ]
 })
 export class ContactComponent implements OnInit {
-  company = COMPANY_INFO;
-  contactForm: FormGroup;
-  isSubmitted = false;
+  private readonly contactService = inject(ContactService);
+  private readonly fb = inject(FormBuilder);
 
-  constructor(private fb: FormBuilder) {
-    this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: [''],
-      company: [''],
-      system: [''],
-      message: ['', Validators.required]
-    });
-  }
+  readonly company = COMPANY_INFO;
+  readonly isSubmitted = signal(false);
+  readonly isLoading   = signal(false);
+  readonly errorMsg    = signal('');
 
-  ngOnInit() {
-    window.scrollTo(0, 0);
-  }
+  readonly contactForm = this.fb.group({
+    name:    ['', Validators.required],
+    email:   ['', [Validators.required, Validators.email]],
+    phone:   [''],
+    company: [''],
+    system:  [''],
+    message: ['', Validators.required],
+  });
+
+  ngOnInit() { window.scrollTo(0, 0); }
 
   onSubmit() {
-    if (this.contactForm.valid) {
-      console.log('Form Submitted', this.contactForm.value);
-      this.isSubmitted = true;
-      this.contactForm.reset();
-      
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        this.isSubmitted = false;
-      }, 5000);
-    } else {
-      Object.keys(this.contactForm.controls).forEach(key => {
-        this.contactForm.get(key)?.markAsTouched();
-      });
-    }
+    if (this.contactForm.invalid) { this.contactForm.markAllAsTouched(); return; }
+
+    const { name, email, phone, company, system, message } = this.contactForm.value;
+    this.isLoading.set(true);
+    this.errorMsg.set('');
+
+    this.contactService.send({
+      from_name:  name    ?? '',
+      reply_to:   email   ?? '',
+      phone:      phone   ?? '',
+      company:    company ?? '',
+      system:     system  ?? '',
+      message:    message ?? '',
+    }).subscribe({
+      next:     () => { this.isSubmitted.set(true); this.isLoading.set(false); this.contactForm.reset(); },
+      error:    () => { this.errorMsg.set('Failed to send. Please email us directly at info@hexa-hub.com'); this.isLoading.set(false); },
+    });
   }
 }

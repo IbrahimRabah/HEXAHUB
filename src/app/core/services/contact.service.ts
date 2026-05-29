@@ -1,36 +1,18 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, delay } from 'rxjs';
-import { ContactFormModel } from '../models/contact.model';
 
-/**
- * Handles contact-form submissions.
- *
- * Currently returns a simulated success response.
- * When the .NET backend is ready, uncomment the real HTTP call.
- */
+// Get a free key at https://web3forms.com — enter info@hexa-hub.com and copy the access key
+const ACCESS_KEY = '5422d9e1-053a-4c55-bc3a-616008b11a50';
+
 @Injectable({ providedIn: 'root' })
 export class ContactService {
   private readonly http = inject(HttpClient);
 
-  // TODO: Replace with the actual .NET API endpoint
-  private readonly apiUrl = '/api/contact';
-
-  /**
-   * Submit a contact-form payload to the backend.
-   * Returns an observable with a success flag and user-facing message.
-   */
-  submitContact(
-    form: ContactFormModel
-  ): Observable<{ success: boolean; message: string }> {
-    // ── Placeholder: simulate API call ──────────────────────────
-    // When backend is ready, replace with:
-    // return this.http.post<{ success: boolean; message: string }>(this.apiUrl, form);
-
-    console.log('Contact form submitted:', form);
-    return of({
-      success: true,
-      message: 'Thank you! We will contact you soon.',
-    }).pipe(delay(1500));
+  send(params: Record<string, string>) {
+    return this.http.post('https://api.web3forms.com/submit', {
+      access_key: ACCESS_KEY,
+      subject: `HexaHub Inquiry – ${params['system'] || 'General Inquiry'}`,
+      ...params,
+    });
   }
 }
