@@ -65,7 +65,7 @@ export const FOOTER_SECTIONS: readonly FooterSection[] = [
   {
     title: 'Contact Info',
     links: [
-      { label: '6 of October City, Egypt' },
+      { label: '6 of October City, Egypt sadas' , href: 'https://goo.gl/maps/your-location-link' },
       { label: 'info@hexa-hub.com',   href: 'mailto:info@hexa-hub.com' },
       { label: '+20 10 444 22 88 1',  href: 'tel:+201044422881' },
       { label: 'www.hexa-hub.com',    href: 'https://www.hexa-hub.com' },
