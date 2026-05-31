@@ -4,8 +4,10 @@
     <section class="system-hero">
       <div class="glow-bg" [style.background]="'radial-gradient(circle, ' + system.accentColor + '20 0%, transparent 70%)'"></div>
       <div class="container text-center" @staggerFade>
-        <div class="system-icon-large stagger-item" [style.background]="system.accentGradient">
-          <i [class]="system.icon"></i>
+        <div class="hex-wrapper stagger-item">
+          <div class="system-icon-large" [style.background]="system.accentGradient">
+            <i [class]="system.icon"></i>
+          </div>
         </div>
         <div class="badge stagger-item" [style.color]="system.accentColor" [style.borderColor]="system.accentColor + '40'" [style.background]="system.accentColor + '10'">
           {{ system.name }}

@@ -134,17 +134,40 @@
       opacity: 1;
       transform: translateX(0);
     }
+
+    .card-icon {
+      transform: rotate(12deg) scale(1.06);
+      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5));
+    }
+  }
+
+  .hex-card-icon {
+    position: relative;
+    width: 60px;
+    height: 69px;
+    margin-bottom: 1.5rem;
+
+    // Outer ring — hexagon halo
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -7px;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      background: rgba(255, 255, 255, 0.07);
+    }
   }
 
   .card-icon {
     width: 60px;
-    height: 60px;
-    border-radius: 16px;
+    height: 69px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.3));
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease;
 
     i {
       font-size: 1.8rem;

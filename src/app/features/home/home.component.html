@@ -29,8 +29,10 @@
       @for (system of systems; track system.id) {
         <div class="col-md-6 col-lg-4 stagger-item">
           <div class="system-card" [ngClass]="system.themeClass">
-            <div class="card-icon" [style.background]="system.accentGradient">
-              <i [class]="system.icon"></i>
+            <div class="hex-card-icon">
+              <div class="card-icon" [style.background]="system.accentGradient">
+                <i [class]="system.icon"></i>
+              </div>
             </div>
             <h3>{{ system.name }}</h3>
             <p class="tagline">{{ system.tagline }}</p>
